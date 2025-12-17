@@ -26,7 +26,11 @@
     "instagram": "https://instagram.com/",
     "whatsapp": "https://wa.me/1234567890",
     "facebook": "https://facebook.com/",
-    "youtube": "https://youtube.com/"
+    "youtube": "https://youtube.com/",
+    "instagram_image": "/uploads/media-8-.png",
+    "facebook_image": "/uploads/media-9-.png",
+    "youtube_image": "/uploads/media-11-.png",
+    "whatsapp_image": "/uploads/whatsapp-logo-png_seeklogo-168310.png"
   },
   "actions": [
     {
