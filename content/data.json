@@ -2,7 +2,7 @@
   "profile": {
     "name": "AV Tutorial",
     "tagline": "AV Tutorial",
-    "logo": "",
+    "logo": "/uploads/logo.png",
     "bullets": [
       {
         "emoji": "📘",
