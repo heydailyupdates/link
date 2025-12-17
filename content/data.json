@@ -4,10 +4,22 @@
     "tagline": "AV Tutorial",
     "logo": "assets/logo.svg",
     "bullets": [
-      { "emoji": "📘", "text": "From basics to brilliance" },
-      { "emoji": "⏳", "text": "Guiding students step by step" },
-      { "emoji": "🚀", "text": "Strong foundation → Higher success" },
-      { "emoji": "💡", "text": "We teach, we care, we inspire" }
+      {
+        "emoji": "📘",
+        "text": "From basics to brilliance"
+      },
+      {
+        "emoji": "⏳",
+        "text": "Guiding students step by step"
+      },
+      {
+        "emoji": "🚀",
+        "text": "Strong foundation → Higher success"
+      },
+      {
+        "emoji": "💡",
+        "text": "We teach, we care, we inspire"
+      }
     ]
   },
   "social": {
@@ -17,10 +29,21 @@
     "youtube": "https://youtube.com/"
   },
   "actions": [
-    { "label": "VIEW OUR WORK", "url": "https://example.com/work" },
-    { "label": "REQUEST A CUSTOM VIDEO", "url": "https://example.com/request" },
-    { "label": "BOOK A FREE CONSULTATION", "url": "https://example.com/consult" },
-    { "label": "SUBSCRIBE TO UPDATES", "url": "https://example.com/subscribe" }
+    {
+      "label": "VIEW OUR WORK",
+      "url": "https://example.com/work"
+    },
+    {
+      "label": "REQUEST A CUSTOM VIDEO",
+      "url": "https://example.com/request"
+    },
+    {
+      "label": "BOOK A FREE CONSULTATION",
+      "url": "https://example.com/consult"
+    },
+    {
+      "label": "SUBSCRIBE TO UPDATES",
+      "url": "https://example.com/subscribe"
+    }
   ]
 }
-
