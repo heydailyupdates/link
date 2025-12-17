@@ -31,8 +31,8 @@ collections:
                   - { label: "Emoji", name: "emoji", widget: "string", required: false }
                   - { label: "Text", name: "text", widget: "string" }
 
-          # ---------------- SOCIAL BOXES ----------------
-          - label: "Social Boxes"
+          # ---------------- SOCIAL IMAGE BOXES ----------------
+          - label: "Social Image Boxes"
             name: "social"
             widget: "object"
             fields:
@@ -47,6 +47,9 @@ collections:
 
               - { label: "YouTube URL", name: "youtube", widget: "string", required: false }
               - { label: "YouTube Image", name: "youtube_image", widget: "image", required: false }
+
+              - { label: "Map URL", name: "map", widget: "string", required: false }
+              - { label: "Map Image", name: "map_image", widget: "image", required: false }
 
           # ---------------- ACTION BUTTONS ----------------
           - label: "Actions / Buttons"
