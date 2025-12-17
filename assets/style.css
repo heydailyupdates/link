@@ -168,3 +168,36 @@ h1 {
   }
 }
 
+/* Social icon row (like sample image) */
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin: 18px 0;
+}
+
+/* Icon container */
+.social-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Icon image */
+.social-icon img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+}
+
+/* Hover effect */
+.social-icon:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
