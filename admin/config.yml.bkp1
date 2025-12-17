@@ -14,8 +14,6 @@ collections:
         label: "Link in Bio"
         name: "link"
         fields:
-
-          # ---------------- PROFILE ----------------
           - label: "Profile"
             name: "profile"
             widget: "object"
@@ -23,7 +21,6 @@ collections:
               - { label: "Profile Name", name: "name", widget: "string" }
               - { label: "Tagline", name: "tagline", widget: "string", required: false }
               - { label: "Logo", name: "logo", widget: "image", required: false }
-
               - label: "Bullets"
                 name: "bullets"
                 widget: "list"
@@ -31,24 +28,15 @@ collections:
                   - { label: "Emoji", name: "emoji", widget: "string", required: false }
                   - { label: "Text", name: "text", widget: "string" }
 
-          # ---------------- SOCIAL BOXES ----------------
-          - label: "Social Boxes"
+          - label: "Social Links"
             name: "social"
             widget: "object"
             fields:
-              - { label: "Instagram URL", name: "instagram", widget: "string", required: false }
-              - { label: "Instagram Image", name: "instagram_image", widget: "image", required: false }
+              - { label: "Instagram", name: "instagram", widget: "string", required: false }
+              - { label: "WhatsApp", name: "whatsapp", widget: "string", required: false }
+              - { label: "Facebook", name: "facebook", widget: "string", required: false }
+              - { label: "YouTube", name: "youtube", widget: "string", required: false }
 
-              - { label: "WhatsApp URL", name: "whatsapp", widget: "string", required: false }
-              - { label: "WhatsApp Image", name: "whatsapp_image", widget: "image", required: false }
-
-              - { label: "Facebook URL", name: "facebook", widget: "string", required: false }
-              - { label: "Facebook Image", name: "facebook_image", widget: "image", required: false }
-
-              - { label: "YouTube URL", name: "youtube", widget: "string", required: false }
-              - { label: "YouTube Image", name: "youtube_image", widget: "image", required: false }
-
-          # ---------------- ACTION BUTTONS ----------------
           - label: "Actions / Buttons"
             name: "actions"
             widget: "list"
