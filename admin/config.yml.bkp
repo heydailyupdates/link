@@ -1,9 +1,11 @@
 backend:
   name: git-gateway
-  branch: main   # change to master if your repo uses master
+  branch: main
 
 media_folder: "uploads"
 public_folder: "/uploads"
+
+local_backend: true
 
 collections:
   - name: "content"
@@ -14,20 +16,16 @@ collections:
         label: "Link in Bio"
         name: "link"
         fields:
-          - label: "Profile"
-            name: "profile"
-            widget: "object"
+          - { label: "Profile Name", name: "profile.name", widget: "string" }
+          - { label: "Tagline", name: "profile.tagline", widget: "string", required: false }
+          - { label: "Logo", name: "profile.logo", widget: "image", required: false }
+          - label: "Bullets"
+            name: "profile.bullets"
+            widget: "list"
+            allow_add: true
             fields:
-              - { label: "Profile Name", name: "name", widget: "string" }
-              - { label: "Tagline", name: "tagline", widget: "string", required: false }
-              - { label: "Logo", name: "logo", widget: "image", required: false }
-              - label: "Bullets"
-                name: "bullets"
-                widget: "list"
-                fields:
-                  - { label: "Emoji", name: "emoji", widget: "string", required: false }
-                  - { label: "Text", name: "text", widget: "string" }
-
+              - { label: "Emoji", name: "emoji", widget: "string", required: false }
+              - { label: "Text", name: "text", widget: "string" }
           - label: "Social Links"
             name: "social"
             widget: "object"
@@ -36,10 +34,11 @@ collections:
               - { label: "WhatsApp", name: "whatsapp", widget: "string", required: false }
               - { label: "Facebook", name: "facebook", widget: "string", required: false }
               - { label: "YouTube", name: "youtube", widget: "string", required: false }
-
           - label: "Actions / Buttons"
             name: "actions"
             widget: "list"
+            summary: "{{fields.label}}"
             fields:
               - { label: "Label", name: "label", widget: "string" }
               - { label: "URL", name: "url", widget: "string" }
+
