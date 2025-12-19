@@ -71,7 +71,7 @@
       });
     }
 
-    /* ✅ SOCIAL ICONS AS IMAGES (CLICKABLE) */
+    /* ✅ SOCIAL ICONS AS IMAGES (CLICKABLE, INCLUDING MAP) */
     function renderSocials(social = {}) {
       const container = document.getElementById('socials');
       container.innerHTML = '';
@@ -80,7 +80,8 @@
         { url: social.instagram, img: social.instagram_image, alt: 'Instagram' },
         { url: social.whatsapp,  img: social.whatsapp_image,  alt: 'WhatsApp' },
         { url: social.facebook,  img: social.facebook_image,  alt: 'Facebook' },
-        { url: social.youtube,   img: social.youtube_image,   alt: 'YouTube' }
+        { url: social.youtube,   img: social.youtube_image,   alt: 'YouTube' },
+        { url: social.map,       img: social.map_image,       alt: 'Map' }   // ✅ MAP ADDED
       ];
 
       items.forEach(item => {

@@ -1,23 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Link in Bio | AV Tutorial</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1B5rY+iI+7ZZg+Ur0Qv0Hn4l0Hgr4r6kKQ5v5G5lH3j7f0p0tGJp4vY4YxH+78NQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="assets/style.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="assets/style.css" />
 </head>
+
 <body>
   <main class="page">
     <section class="card">
       <div class="hero">
         <div id="logo" class="logo-circle">AV</div>
+
         <h1 id="title">AV Tutorial</h1>
         <div id="subtitle" class="subtitle">AV Tutorial</div>
+
         <ul id="bullets" class="bullets"></ul>
+
+        <!-- SOCIAL IMAGE ICONS -->
         <div class="socials" id="socials"></div>
       </div>
 
@@ -25,52 +36,67 @@
     </section>
   </main>
 
+  <!-- MAIN SCRIPT -->
   <script>
     const dataUrl = 'content/data.json';
 
-    const socialIcons = {
-      instagram: 'fa-brands fa-instagram',
-      whatsapp: 'fa-brands fa-whatsapp',
-      facebook: 'fa-brands fa-facebook-f',
-      youtube: 'fa-brands fa-youtube'
-    };
-
     function setLogo(profile) {
       const logoEl = document.getElementById('logo');
-      if (profile.logo && profile.logo.trim()) {
+
+      if (profile.logo) {
         const img = document.createElement('img');
         img.src = profile.logo;
-        img.alt = profile.name || 'Profile';
+        img.alt = profile.name || 'Logo';
         logoEl.innerHTML = '';
         logoEl.classList.add('logo-image');
         logoEl.appendChild(img);
       } else {
-        logoEl.textContent = (profile.name || 'AV').substring(0, 2).toUpperCase();
+        logoEl.textContent = (profile.name || 'AV')
+          .substring(0, 2)
+          .toUpperCase();
       }
     }
 
     function renderBullets(bullets = []) {
       const list = document.getElementById('bullets');
       list.innerHTML = '';
+
       bullets.forEach(item => {
         const li = document.createElement('li');
-        li.innerHTML = `<span class="emoji">${item.emoji || '•'}</span><span>${item.text || ''}</span>`;
+        li.innerHTML = `
+          <span class="emoji">${item.emoji || '•'}</span>
+          <span>${item.text || ''}</span>
+        `;
         list.appendChild(li);
       });
     }
 
+    /* ✅ SOCIAL ICONS AS IMAGES (CLICKABLE) */
     function renderSocials(social = {}) {
       const container = document.getElementById('socials');
       container.innerHTML = '';
-      Object.entries(social).forEach(([key, url]) => {
-        if (!url) return;
+
+      const items = [
+        { url: social.instagram, img: social.instagram_image, alt: 'Instagram' },
+        { url: social.whatsapp,  img: social.whatsapp_image,  alt: 'WhatsApp' },
+        { url: social.facebook,  img: social.facebook_image,  alt: 'Facebook' },
+        { url: social.youtube,   img: social.youtube_image,   alt: 'YouTube' }
+      ];
+
+      items.forEach(item => {
+        if (!item.url || !item.img) return;
+
         const link = document.createElement('a');
-        link.href = url;
+        link.href = item.url;
         link.target = '_blank';
         link.rel = 'noopener noreferrer';
-        link.className = 'social-btn';
-        const iconClass = socialIcons[key] || 'fa-solid fa-link';
-        link.innerHTML = `<i class="${iconClass}"></i>`;
+        link.className = 'social-icon';
+
+        const img = document.createElement('img');
+        img.src = item.img;
+        img.alt = item.alt;
+
+        link.appendChild(img);
         container.appendChild(link);
       });
     }
@@ -78,14 +104,17 @@
     function renderActions(actions = []) {
       const container = document.getElementById('actions');
       container.innerHTML = '';
+
       actions.forEach(action => {
         if (!action.label) return;
+
         const btn = document.createElement('a');
         btn.className = 'cta';
-        btn.href = action.url || '#';
+        btn.href = action.url;
         btn.target = '_blank';
         btn.rel = 'noopener noreferrer';
         btn.textContent = action.label;
+
         container.appendChild(btn);
       });
     }
@@ -93,22 +122,28 @@
     async function loadData() {
       try {
         const res = await fetch(dataUrl);
-        if (!res.ok) throw new Error('Failed to load content');
+        if (!res.ok) throw new Error('Failed to load data');
         const data = await res.json();
-        document.getElementById('title').textContent = data.profile?.name || 'Profile';
-        document.getElementById('subtitle').textContent = data.profile?.tagline || '';
+
+        document.getElementById('title').textContent =
+          data.profile?.name || 'Profile';
+
+        document.getElementById('subtitle').textContent =
+          data.profile?.tagline || '';
+
         setLogo(data.profile || {});
         renderBullets(data.profile?.bullets || []);
         renderSocials(data.social || {});
         renderActions(data.actions || []);
-      } catch (err) {
-        console.error(err);
-        document.getElementById('title').textContent = 'Content unavailable';
+      } catch (e) {
+        console.error(e);
       }
     }
 
     loadData();
   </script>
+
+  <!-- NETLIFY IDENTITY -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </body>
 </html>
-
