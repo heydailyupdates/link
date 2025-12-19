@@ -1,46 +1,32 @@
 <?php
 require "auth.php";
-
-$dataFile = "../content/data.json";
-$data = json_decode(file_get_contents($dataFile), true);
+$data=json_decode(file_get_contents("../content/data.json"),true);
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Admin Dashboard</title>
-</head>
-<body>
-
-<h2>Edit Site Content</h2>
-
 <form method="post" action="save.php" enctype="multipart/form-data">
+<h2>Edit Site</h2>
 
-  <h3>Profile</h3>
-  <input name="name" value="<?= $data['profile']['name'] ?>" placeholder="Name"><br><br>
-  <input name="tagline" value="<?= $data['profile']['tagline'] ?>" placeholder="Tagline"><br><br>
+Name <input name="name" value="<?=$data['profile']['name']?>"><br>
+Tagline <input name="tagline" value="<?=$data['profile']['tagline']?>"><br>
+Logo <input type="file" name="logo"><br><br>
 
-  <h3>Social Links</h3>
-  <input name="instagram" value="<?= $data['social']['instagram'] ?>" placeholder="Instagram URL"><br><br>
-  <input type="file" name="instagram_image"><br><br>
+<?php foreach($data['profile']['bullets'] as $i=>$b): ?>
+Emoji <input name="bullets[<?=$i?>][emoji]" value="<?=$b['emoji']?>">
+Text <input name="bullets[<?=$i?>][text]" value="<?=$b['text']?>"><br>
+<?php endforeach; ?>
 
-  <input name="whatsapp" value="<?= $data['social']['whatsapp'] ?>" placeholder="WhatsApp URL"><br><br>
-  <input type="file" name="whatsapp_image"><br><br>
+<br>Background Color
+<input name="bg" value="<?=$data['theme']['background_value']?>"><br><br>
 
-  <input name="facebook" value="<?= $data['social']['facebook'] ?>" placeholder="Facebook URL"><br><br>
-  <input type="file" name="facebook_image"><br><br>
+<?php foreach(["instagram","whatsapp","facebook","map"] as $s): ?>
+<?=$s?> URL <input name="<?=$s?>" value="<?=$data['social'][$s]?>">
+Image <input type="file" name="<?=$s?>_image"><br>
+<?php endforeach; ?>
 
-  <input name="youtube" value="<?= $data['social']['youtube'] ?>" placeholder="YouTube URL"><br><br>
-  <input type="file" name="youtube_image"><br><br>
+<?php foreach($data['actions'] as $i=>$a): ?>
+Button <input name="actions[<?=$i?>][label]" value="<?=$a['label']?>">
+URL <input name="actions[<?=$i?>][url]" value="<?=$a['url']?>"><br>
+<?php endforeach; ?>
 
-  <input name="map" value="<?= $data['social']['map'] ?>" placeholder="Map URL"><br><br>
-  <input type="file" name="map_image"><br><br>
-
-  <button type="submit">Save Changes</button>
+<button>Save</button>
 </form>
-
-<br>
 <a href="logout.php">Logout</a>
-
-</body>
-</html>
